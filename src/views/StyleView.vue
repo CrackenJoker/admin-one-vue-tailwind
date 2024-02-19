@@ -5,6 +5,7 @@ import { gradientBgPurplePink } from '@/colors.js'
 import SectionMain from '@/components/SectionMain.vue'
 import CardBox from '@/components/CardBox.vue'
 import LayoutGuest from '@/layouts/LayoutGuest.vue'
+import { onMounted } from 'vue';
 
 const styles = ['white', 'basic']
 
@@ -13,7 +14,9 @@ const darkModeStore = useDarkModeStore()
 darkModeStore.set(false)
 
 const router = useRouter()
-
+onMounted(()=>{
+  handleStyleChange('white')
+})
 const handleStyleChange = (slug) => {
   document.documentElement.classList.forEach((token) => {
     if (token.indexOf('style') === 0) {
@@ -21,7 +24,7 @@ const handleStyleChange = (slug) => {
     }
   })
 
-  router.push('/dashboard')
+  router.push('/login')
 }
 </script>
 
